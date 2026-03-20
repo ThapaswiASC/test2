@@ -1,269 +1,243 @@
-# UX Workflow Documentation: Parent Management of Youth Account Funds
+# User Workflow Journey: Parent Allocating and Managing Funds for a Youth Account
 
 ## Experience Mindset
 
 **Primary User:** Parent/Guardian
-**Experience:** Managing a youth banking account (teaching financial responsibility, maintaining control)
-
-### Key Scenarios
-1. Access youth account dashboard
-2. Allocate funds to youth account
-3. Set spending limit
-4. View youth spending activity
-5. Handle insufficient balance during fund allocation
+**Experience:** Managing a youth banking account (awareness, onboarding, fund allocation, limit setting, activity monitoring, troubleshooting)
 
 ---
 
-## Scenario 1: Access Youth Account Dashboard
+## Identified Scenarios & Workflow Variations
 
-### Scenario Context
-Parent, after logging in, wants to review their child’s youth account status and recent activity.
+### Scenario 1: Access Youth Account Dashboard
+**Context:** Parent is logged in and wants to view/manage their child's account.
 
-### User Goal
-To quickly and clearly view youth account balance and recent transactions.
+#### Workflow Variation A: Direct Navigation
+- Parent logs in → Main dashboard → Clicks 'Youth Accounts' → Youth Account Dashboard
 
-### Business Goal
-Increase engagement and trust by providing transparent, easy-to-understand account information.
+#### Workflow Variation B: Notification-Driven Access
+- Parent logs in → Receives notification (e.g., 'Review recent youth activity') → Clicks notification → Youth Account Dashboard
 
-### Workflow Design Variations
+**User Goal:** Quickly access youth account information and controls.
+**Business Goal:** Increase engagement and transparency for account management.
 
-#### Variation 1: Dashboard as Landing Page
-- **1.0 Dashboard Home**
-  - **Goal:** Immediate overview of youth account
-  - **Description:** Upon login, parent lands directly on dashboard showing balance, recent activity, and quick actions.
-  - **Design Problems:**
-    - HMW ensure the dashboard is not overwhelming?
-    - HMW prioritize information for quick scanning?
-  - **Design Opportunities:**
-    - What if parents could customize dashboard widgets?
-    - What if a virtual assistant summarizes recent activity?
-
-#### Variation 2: Dashboard via Navigation
-- **1.0 Main Menu**
-  - **Goal:** Provide clear navigation to youth account section
-  - **Description:** Parent selects "Youth Accounts" from main menu.
-  - **Design Problems:**
-    - HMW make navigation intuitive for first-time users?
-  - **Design Opportunities:**
-    - What if the menu highlights new activity?
-- **2.0 Youth Account Dashboard**
-  - (Same as above)
-
-### Screen Sequence
-- Variation 1: 1.0 Dashboard Home
-- Variation 2: 1.0 Main Menu -> 2.0 Youth Account Dashboard
+**Screens:**
+1.0 Main Dashboard
+2.0 Youth Account Dashboard
 
 ---
 
-## Scenario 2: Allocate Funds to Youth Account
+### Scenario 2: Allocate Funds to Youth Account
+**Context:** Parent wants to add funds to the youth account.
 
-### Scenario Context
-Parent wants to transfer money from their account to the youth account, e.g., for allowance or purchases.
+#### Workflow Variation A: From Dashboard Quick Action
+- Youth Account Dashboard → Click 'Add Funds' → Enter amount → Select source account → Confirm → Success/Error
 
-### User Goal
-To transfer funds quickly, securely, and with clear confirmation.
+#### Workflow Variation B: From Account Management Menu
+- Youth Account Dashboard → Open 'Manage Funds' menu → Select 'Transfer to Youth' → Enter details → Confirm → Success/Error
 
-### Business Goal
-Promote use of youth accounts, reduce support queries about transfers.
+**User Goal:** Seamlessly transfer funds to youth account.
+**Business Goal:** Encourage responsible, trackable fund allocation.
 
-### Workflow Design Variations
-
-#### Variation 1: Inline Transfer Widget
-- **1.0 Dashboard Home**
-- **1.1 Add Funds Pop-Up (Pu.1)**
-  - **Goal:** Enable quick fund allocation
-  - **Description:** Parent clicks "Add Funds"; modal appears with source account selector, amount input, and confirm button.
-  - **Design Problems:**
-    - HMW prevent errors in amount entry?
-    - HMW make source account selection clear?
-  - **Design Opportunities:**
-    - What if suggested amounts are based on past transfers?
-- **1.2 Confirmation Pop-Up (Pu.2)**
-  - **Goal:** Confirm transfer before execution
-  - **Description:** Shows transfer summary, asks for confirmation.
-
-#### Variation 2: Dedicated Transfer Page
-- **1.0 Dashboard Home**
-- **2.0 Fund Transfer Page**
-  - **Goal:** Provide detailed transfer flow
-  - **Description:** Parent navigates to a full page for fund transfer, with contextual tips and validation.
-  - **Design Problems:**
-    - HMW keep the flow efficient while providing guidance?
-  - **Design Opportunities:**
-    - What if the page shows projected balance after transfer?
-- **2.1 Success Pop-Up (Pu.1)**
-
-### Screen Sequence
-- Variation 1: 1.0 Dashboard Home -> 1.1 Add Funds Pop-Up -> 1.2 Confirmation Pop-Up
-- Variation 2: 1.0 Dashboard Home -> 2.0 Fund Transfer Page -> 2.1 Success Pop-Up
+**Screens:**
+2.0 Youth Account Dashboard
+3.0 Fund Transfer Initiation
+3.1 Fund Transfer Confirmation
+Er.1 Insufficient Balance Error
+3.2 Fund Transfer Success
 
 ---
 
-## Scenario 3: Set Spending Limit
+### Scenario 3: Set Spending Limit
+**Context:** Parent wants to control weekly spending for the youth account.
 
-### Scenario Context
-Parent wants to set or adjust a weekly spending limit for the youth account.
+#### Workflow Variation A: Inline Limit Setting
+- Youth Account Dashboard → 'Set/Change Spending Limit' inline control → Enter value → Save → Confirmation
 
-### User Goal
-To easily configure and understand spending limits.
+#### Workflow Variation B: Dedicated Limit Management Page
+- Youth Account Dashboard → 'Manage Spending Limits' → Separate page/modal → Enter/edit value → Save → Confirmation
 
-### Business Goal
-Empower parents to teach budgeting, reduce risk of overspending.
+**User Goal:** Easily set or adjust spending limits.
+**Business Goal:** Promote financial discipline and parental oversight.
 
-### Workflow Design Variations
-
-#### Variation 1: Inline Limit Editor
-- **1.0 Dashboard Home**
-- **1.1 Edit Limit Pop-Up (Pu.1)**
-  - **Goal:** Quick access to limit settings
-  - **Description:** Parent clicks "Edit Limit"; modal allows input, with guidance and validation.
-  - **Design Problems:**
-    - HMW explain limits without jargon?
-    - HMW prevent invalid values?
-  - **Design Opportunities:**
-    - What if the system suggests limits based on age or spending history?
-
-#### Variation 2: Dedicated Limit Management Page
-- **1.0 Dashboard Home**
-- **2.0 Spending Limit Page**
-  - **Goal:** Provide comprehensive limit management
-  - **Description:** Full page with current limit, edit controls, and educational content.
-  - **Design Problems:**
-    - HMW balance detail with simplicity?
-  - **Design Opportunities:**
-    - What if parents could set multiple types of limits (daily, category)?
-
-### Screen Sequence
-- Variation 1: 1.0 Dashboard Home -> 1.1 Edit Limit Pop-Up
-- Variation 2: 1.0 Dashboard Home -> 2.0 Spending Limit Page
+**Screens:**
+2.0 Youth Account Dashboard
+4.0 Spending Limit Configuration
+4.1 Spending Limit Confirmation
+Er.2 Invalid Limit Value Error
 
 ---
 
-## Scenario 4: View Youth Spending Activity
+### Scenario 4: View Youth Spending Activity
+**Context:** Parent wants to monitor transactions and spending patterns.
 
-### Scenario Context
-Parent wants to review where and how their child is spending money.
+#### Workflow Variation A: Dashboard Transaction List
+- Youth Account Dashboard → Scroll to 'Recent Activity' → View/filter transactions
 
-### User Goal
-To quickly scan and filter youth account transactions.
+#### Workflow Variation B: Detailed Activity Page
+- Youth Account Dashboard → Click 'View All Activity' → Dedicated transaction history page with filters
 
-### Business Goal
-Increase transparency, help parents guide responsible spending.
+**User Goal:** Understand youth spending behavior at a glance or in detail.
+**Business Goal:** Provide transparency and build trust in the platform.
 
-### Workflow Design Variations
-
-#### Variation 1: Embedded Transaction List
-- **1.0 Dashboard Home**
-  - **Goal:** Show recent transactions at a glance
-  - **Description:** List of recent transactions with date, merchant, amount, and balance. Filter by time period.
-  - **Design Problems:**
-    - HMW make patterns visible?
-  - **Design Opportunities:**
-    - What if the system highlights unusual spending?
-
-#### Variation 2: Full Activity Page
-- **1.0 Dashboard Home**
-- **2.0 Activity Page**
-  - **Goal:** Provide detailed, filterable transaction history
-  - **Description:** Full page with advanced filters, export options, and spending summaries.
-  - **Design Problems:**
-    - HMW keep filtering simple?
-  - **Design Opportunities:**
-    - What if parents could set alerts for specific merchants or amounts?
-
-### Screen Sequence
-- Variation 1: 1.0 Dashboard Home
-- Variation 2: 1.0 Dashboard Home -> 2.0 Activity Page
+**Screens:**
+2.0 Youth Account Dashboard
+5.0 Transaction History (with filters)
 
 ---
 
-## Scenario 5: Handle Insufficient Balance During Fund Allocation
+### Scenario 5: Handle Insufficient Balance During Fund Allocation
+**Context:** Parent tries to transfer more than available in their own account.
 
-### Scenario Context
-Parent attempts to transfer more funds than available in their account.
+#### Workflow Variation A: Inline Error
+- Fund Transfer → Enter amount → System detects insufficient funds → Inline error message, disables confirmation
 
-### User Goal
-To understand why the transfer failed and what to do next.
+#### Workflow Variation B: Post-Submission Error Modal
+- Fund Transfer → Enter amount → Attempt transfer → Error modal appears explaining insufficient funds, with options to retry or cancel
 
-### Business Goal
-Reduce failed transactions and support calls.
+**User Goal:** Clearly understand why a transfer failed and how to resolve it.
+**Business Goal:** Reduce failed transactions and support self-service troubleshooting.
 
-### Workflow Design Variations
-
-#### Variation 1: Inline Error Message
-- **1.0 Add Funds Pop-Up (Pu.1)**
-- **Er.1 Insufficient Balance Error**
-  - **Goal:** Clearly communicate the error
-  - **Description:** Error message appears inline, with actionable suggestions (e.g., "Choose smaller amount" or "View account balance").
-  - **Design Problems:**
-    - HMW avoid user frustration?
-  - **Design Opportunities:**
-    - What if the system suggests alternative funding sources?
-
-#### Variation 2: Error Pop-Up
-- **1.0 Add Funds Pop-Up (Pu.1)**
-- **Pu.2 Error Modal**
-  - **Goal:** Ensure error is noticed and understood
-  - **Description:** Modal with error details and next steps.
-  - **Design Problems:**
-    - HMW prevent repeated errors?
-  - **Design Opportunities:**
-    - What if the modal links directly to add funds to parent account?
-
-### Screen Sequence
-- Variation 1: 1.0 Add Funds Pop-Up -> Er.1 Insufficient Balance Error
-- Variation 2: 1.0 Add Funds Pop-Up -> Pu.2 Error Modal
+**Screens:**
+3.1 Fund Transfer Confirmation
+Er.1 Insufficient Balance Error
 
 ---
 
-## Summary of All Screens (Unique Numbering)
+## Minimum Viable Experience (MVE)
+- Parent can access youth dashboard, view balance and recent activity, allocate funds, set spending limits, and see clear errors for failed actions.
 
-- 1.0 Dashboard Home
-- 1.1 Add Funds Pop-Up (Pu.1)
-- 1.2 Confirmation Pop-Up (Pu.2)
-- 2.0 Fund Transfer Page
-- 2.1 Success Pop-Up (Pu.1)
-- 1.1 Edit Limit Pop-Up (Pu.1)
-- 2.0 Spending Limit Page
-- 2.0 Activity Page
-- Er.1 Insufficient Balance Error
-- Pu.2 Error Modal
-- 1.0 Main Menu
+---
+
+## Detailed Screen List & Documentation
+
+### 1.0 Main Dashboard
+- **Goal:** Provide entry point to all parent-managed accounts.
+- **Description:** Overview of all linked accounts, notifications, and quick links (including 'Youth Accounts').
+- **Design Problems:**
+  - HMW make youth account access prominent without clutter?
+  - HMW surface important notifications efficiently?
+- **Design Opportunities:**
+  - What if the dashboard adapts to show most-used actions?
+  - What if notifications are personalized?
+
+### 2.0 Youth Account Dashboard
+- **Goal:** Central hub for youth account management.
+- **Description:** Shows youth account balance, recent activity, quick actions (add funds, set limits), and summary widgets.
+- **Design Problems:**
+  - HMW balance information density with clarity?
+  - HMW make 'Add Funds' and 'Set Limit' actions obvious but not overwhelming?
+- **Design Opportunities:**
+  - What if the dashboard visualizes spending trends?
+  - What if parents get proactive suggestions (e.g., 'Consider raising limit for summer')?
+
+### 3.0 Fund Transfer Initiation
+- **Goal:** Initiate transfer from parent to youth account.
+- **Description:** Form for selecting source account, entering amount, and viewing available balance.
+- **Design Problems:**
+  - HMW prevent errors before submission?
+  - HMW reassure users about transfer security?
+- **Design Opportunities:**
+  - What if the system suggests typical transfer amounts?
+  - What if parents can schedule recurring transfers?
+
+### 3.1 Fund Transfer Confirmation
+- **Goal:** Confirm transfer details before execution.
+- **Description:** Summary of entered details, with clear confirm/cancel options.
+- **Design Problems:**
+  - HMW prevent accidental transfers?
+- **Design Opportunities:**
+  - What if confirmation includes a reminder of spending limits?
+
+### 3.2 Fund Transfer Success
+- **Goal:** Notify parent of successful transfer.
+- **Description:** Success message, updated balances, and option to return to dashboard or set a spending limit.
+- **Design Problems:**
+  - HMW reinforce positive actions?
+- **Design Opportunities:**
+  - What if success screens offer tips for teaching kids about money?
+
+### Er.1 Insufficient Balance Error
+- **Goal:** Clearly communicate insufficient funds.
+- **Description:** Inline or modal error with guidance (e.g., 'Your account balance is $X, please enter a lower amount or fund your account').
+- **Design Problems:**
+  - HMW reduce frustration when errors occur?
+- **Design Opportunities:**
+  - What if the error screen links to funding options?
+
+### 4.0 Spending Limit Configuration
+- **Goal:** Allow parent to set or edit weekly spending limits.
+- **Description:** Input for limit value, explanation of how limits work, and current active limit display.
+- **Design Problems:**
+  - HMW make limits understandable and actionable?
+- **Design Opportunities:**
+  - What if parents get recommendations based on past spending?
+
+### 4.1 Spending Limit Confirmation
+- **Goal:** Confirm new/edited spending limit.
+- **Description:** Confirmation message and updated dashboard display.
+- **Design Problems:**
+  - HMW reassure parents that limits are active?
+- **Design Opportunities:**
+  - What if confirmation includes an option to notify the youth?
+
+### Er.2 Invalid Limit Value Error
+- **Goal:** Prevent and explain invalid limit entries.
+- **Description:** Inline error for non-numeric, negative, or excessively high values.
+- **Design Problems:**
+  - HMW prevent accidental misconfiguration?
+- **Design Opportunities:**
+  - What if the UI suggests reasonable limits?
+
+### 5.0 Transaction History (with filters)
+- **Goal:** Provide detailed view of youth spending.
+- **Description:** List of transactions with date, merchant, amount, remaining balance, and filters for time period/type.
+- **Design Problems:**
+  - HMW make large lists scannable?
+  - HMW support both overview and detail?
+- **Design Opportunities:**
+  - What if parents can flag or comment on transactions?
+  - What if spending is categorized automatically?
+
+---
+
+## Sequence of Screens (Example Workflows)
+
+### Workflow 1: Allocate Funds (Direct)
+1.0 Main Dashboard → 2.0 Youth Account Dashboard → 3.0 Fund Transfer Initiation → 3.1 Fund Transfer Confirmation → 3.2 Fund Transfer Success
+
+### Workflow 2: Allocate Funds (Insufficient Balance)
+1.0 Main Dashboard → 2.0 Youth Account Dashboard → 3.0 Fund Transfer Initiation → 3.1 Fund Transfer Confirmation → Er.1 Insufficient Balance Error
+
+### Workflow 3: Set Spending Limit (Inline)
+1.0 Main Dashboard → 2.0 Youth Account Dashboard → 4.0 Spending Limit Configuration → 4.1 Spending Limit Confirmation
+
+### Workflow 4: View Activity (Dashboard)
+1.0 Main Dashboard → 2.0 Youth Account Dashboard → 5.0 Transaction History
+
+### Workflow 5: Access via Notification
+1.0 Main Dashboard → Notification → 2.0 Youth Account Dashboard
 
 ---
 
 ## Accessibility & Scalability Considerations
-- All workflows use clear, high-contrast layouts and large touch targets for accessibility.
-- All error states provide actionable, non-technical language.
-- All screens are designed to scale for desktop and tablet, with responsive layouts.
-- All lists and forms support keyboard navigation and screen readers.
-- All pop-ups and modals are accessible via ARIA roles and focus management.
+- All actions are accessible via keyboard and screen reader.
+- Error messages are clear, persistent, and actionable.
+- Layouts adapt for desktop and tablet.
+- All data visualizations have text alternatives.
+- Workflows support future features (e.g., multiple youth accounts, recurring transfers).
 
 ---
 
-## Edge Cases Considered
-- Parent with multiple youth accounts
-- Parent with no available funds
-- Parent with no transaction history
-- Attempt to set a negative or zero spending limit
-- Network or system errors during fund transfer
+## Summary Table: Scenarios & Variations
+| Scenario | Variation A | Variation B |
+|----------|-------------|-------------|
+| Access Youth Dashboard | Direct Navigation | Notification-Driven |
+| Allocate Funds | Dashboard Quick Action | Account Management Menu |
+| Set Spending Limit | Inline Control | Dedicated Page/Modal |
+| View Activity | Dashboard List | Detailed Activity Page |
+| Handle Insufficient Balance | Inline Error | Post-Submission Modal |
 
 ---
 
-## Example Workflow Sequences
-
-**Allocate Funds (Variation 1):**
-1.0 Dashboard Home → 1.1 Add Funds Pop-Up → 1.2 Confirmation Pop-Up
-
-**Set Spending Limit (Variation 2):**
-1.0 Dashboard Home → 2.0 Spending Limit Page
-
-**View Activity (Variation 2):**
-1.0 Dashboard Home → 2.0 Activity Page
-
-**Handle Insufficient Balance (Variation 1):**
-1.0 Add Funds Pop-Up → Er.1 Insufficient Balance Error
-
----
-
-# End of Workflow Documentation
+## End of User Workflow Journey Documentation
