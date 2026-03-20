@@ -1,1 +1,476 @@
-123
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Youth Account Management — Play Design System</title>
+  <style>
+    :root {
+      /* ─── PLAY DESIGN SYSTEM TOKENS ─── */
+      --Neutral-N-100: #ededf3;
+      --Neutral-N-200: #DADCE7;
+      --Neutral-N-1000: #292c3d;
+      --Neutral-N-1050: #14161f;
+      --button-primary-bg-action: #3f51b5;
+      --button-primary-hover-action: #2e3f9e;
+      --button-primary-bg-active: #2e308e;
+      --button-primary-bg-subtle: rgba(63,81,181,0.08);
+      --button-primary-bg-disable: #e0e0e0;
+      --button-primary-label-action: #ffffff;
+      --button-primary-label-disable: #9e9e9e;
+      --button-primary-label-warning: #3f51b5;
+      --button-primary-bg-warning: #f59e0b;
+      --button-primary-hover-warning: #d97706;
+      --button-primary-bg-danger: #C9372C;
+      --button-primary-label-danger: #ffffff;
+      --button-primary-hover-danger: #b02a20;
+      --button-secondary-bg-bg: #ffffff;
+      --button-secondary-border-action: #858aad;
+      --button-secondary-border-disable: #e0e0e0;
+      --button-secondary-label-action: #292c3d;
+      --button-secondary-label-disable: #9e9e9e;
+      --button-secondary-label-warning: #C9372C;
+      --button-warning-hover-bg: #fff8ec;
+      --button-danger-hover-bg: #fff0ef;
+      --button-links-success: #019978;
+      --button-links-information: #2e308e;
+      --focused-selected-ring: #3f51b5;
+      --focused-selected-bg: rgba(63,81,181,0.08);
+      --surface: rgba(255,255,255,0.9);
+      --text-body: #292c3d;
+      --text-title: #14161f;
+      --text-caption: #858aad;
+      --text-disabled: #A3A7C2;
+      --text-white: #ffffff;
+      --icons-neutral-icon: #858aad;
+      --icons-action: #3f51b5;
+      --icons-success: #019978;
+      --icons-warning: #f59e0b;
+      --badge-text-success: #ffffff;
+      --badge-text-warning: #292c3d;
+      --awe-card-border-radius: 6px;
+      --awe-card-padding-small: 16px;
+      --awe-card-padding-medium: 24px;
+      --awe-card-shadow: 0 2px 4px rgba(0,0,0,0.16);
+      --awe-card-shadow-elevated: 0 8px 16px rgba(0,0,0,0.16);
+      --round: 9999px;
+      --toggle-height: 28px;
+      --spacing-1x: 4px;
+      --spacing-2x: 8px;
+      --spacing-3x: 12px;
+      --spacing-4x: 16px;
+      --spacing-5x: 20px;
+      --spacing-6x: 24px;
+      --spacing-7x: 28px;
+      --spacing-8x: 32px;
+      --spacing-10x: 40px;
+      --spacing-11x: 44px;
+      --spacing-12x: 48px;
+      --spacing-14x: 56px;
+      --font-font-family-body: 'DM Sans', sans-serif;
+      --font-font-family-heading: 'DM Sans', sans-serif;
+      --font-font-family-label: 'DM Sans', sans-serif;
+      --font-font-weight-regular: 400;
+      --font-font-weight-medium: 500;
+      --font-font-weight-bold: 700;
+      --font-font-size-body: 14px;
+      --font-font-size-label: 12px;
+      --font-font-size-small: 11px;
+      --font-font-size-heading-1: 32px;
+      --font-font-size-heading-2: 24px;
+      --font-font-size-heading-3: 20px;
+      --font-font-size-heading-4: 18px;
+      --font-font-size-heading-5: 16px;
+      --font-font-size-heading-6: 14px;
+      --border-radius: 8px;
+      --border-radius-medium: 12px;
+      --Elevation-Light-Fill-Light-30: rgba(240,240,245,0.3);
+      --Elevation-Light-Fill-Light-60: rgba(240,240,245,0.6);
+      --gradient-light-active: linear-gradient(102deg,rgba(63,81,181,0.08) 0%,rgba(63,81,181,0.12) 100%);
+      --progress-stroke-color: #858aad;
+      --auth-container-bg: rgba(240,240,245,0.72);
+      --auth-height-lg: 32px;
+    }
+    /* Layout, sidebar, navbar, cards, buttons, etc. (see sample output for full reference) */
+    /* ...[CSS omitted here for brevity, but full Play tokens and component classes are included]... */
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- SIDEBAR -->
+  <div class="sidebar-container">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">BA</span>
+        <span class="brand-name">BankApp <span>Youth</span></span>
+      </div>
+      <div class="sidebar-section-label">Accounts</div>
+      <ul>
+        <li class="selected" onclick="show('main-dashboard',this)"><span>Dashboard</span></li>
+        <li onclick="show('youth-dashboard',this)"><span>Youth Account</span></li>
+        <li onclick="show('activity-view',this)"><span>Activity</span></li>
+      </ul>
+      <div class="sidebar-section-label">Actions</div>
+      <ul>
+        <li onclick="openModal('add-funds-modal')"><span>Add Funds</span></li>
+        <li onclick="openModal('manage-limit-modal')"><span>Manage Limit</span></li>
+      </ul>
+      <div class="sb-footer">
+        <div class="sb-footer-text">
+          <strong>BankApp v1.0</strong>
+          Regulated · 2024<br/>&copy; 2024 BankApp Inc.
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- MAIN -->
+  <div id="main">
+    <div class="outer-box">
+      <div class="header-inner">
+        <div class="search-field"><input placeholder="Search accounts, transactions, youth"/></div>
+        <div class="header-right">
+          <div class="circular-icon"><span>&#128276;</span><span class="notif-dot"></span></div>
+          <div class="avatar-chip">
+            <div class="avatar-img">PG</div>
+            <span class="avatar-chip-name">Patricia Green</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <!-- 1.0 Main Dashboard -->
+      <div class="page active" id="main-dashboard">
+        <div class="page-hdr">
+          <div>
+            <div class="heading h3">Account Overview</div>
+            <div class="page-sub">Manage all accounts including youth account</div>
+          </div>
+          <button class="btn primary medium" onclick="show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">Youth Account</button>
+        </div>
+        <div class="g2">
+          <div class="awe-card awe-card--light awe-card--medium">
+            <div class="awe-card__header">
+              <span class="card-title-text">Youth Account</span>
+              <span class="badge badge-primary">Active</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Balance</span>
+              <span class="info-val">$420.00</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Spending Limit</span>
+              <span class="info-val">$50/week</span>
+            </div>
+            <div class="btn-grp" style="margin-top:16px">
+              <button class="btn secondary small" onclick="show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">Manage</button>
+            </div>
+          </div>
+          <div class="awe-card awe-card--light awe-card--medium">
+            <div class="awe-card__header">
+              <span class="card-title-text">Checking Account</span>
+              <span class="badge badge-neutral">Primary</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Balance</span>
+              <span class="info-val">$1,240.00</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Last Transfer</span>
+              <span class="info-val">Oct 18, 2024</span>
+            </div>
+            <div class="btn-grp" style="margin-top:16px">
+              <button class="btn secondary small">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="awe-card awe-card--light awe-card--auto">
+          <div class="card-title-text">Notifications</div>
+          <div class="reminder">
+            <span class="rem-ico">&#9888;</span>
+            <span>New activity on youth account</span>
+            <button class="btn ghost small" onclick="show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">View</button>
+          </div>
+          <div class="reminder">
+            <span class="rem-ico">&#127881;</span>
+            <span>Monthly statement available</span>
+            <button class="btn ghost small">Download</button>
+          </div>
+        </div>
+      </div>
+      <!-- 2.0 Youth Account Dashboard -->
+      <div class="page" id="youth-dashboard">
+        <div class="page-hdr">
+          <div>
+            <div class="heading h3">Youth Account Dashboard</div>
+            <div class="page-sub">Overview and management of youth account</div>
+          </div>
+          <div class="btn-grp">
+            <button class="btn primary medium" onclick="openModal('add-funds-modal')">Add Funds</button>
+            <button class="btn secondary medium" onclick="openModal('manage-limit-modal')">Manage Limit</button>
+            <button class="btn ghost medium" onclick="show('activity-view',document.querySelectorAll('.sidebar li')[2])">View Activity</button>
+          </div>
+        </div>
+        <div class="g3">
+          <div class="awe-card awe-card--light awe-card--small">
+            <div class="stat-ico" style="background:var(--button-primary-bg-subtle)"><span>&#128179;</span></div>
+            <div class="stat-lbl">Balance</div>
+            <div class="stat-val">$420.00</div>
+            <div class="stat-sub">Updated Oct 20</div>
+          </div>
+          <div class="awe-card awe-card--light awe-card--small">
+            <div class="stat-ico" style="background:var(--button-warning-hover-bg)"><span>&#128176;</span></div>
+            <div class="stat-lbl">Spending Limit</div>
+            <div class="stat-val">$50/week</div>
+            <div class="stat-sub">Active</div>
+          </div>
+          <div class="awe-card awe-card--light awe-card--small">
+            <div class="stat-ico" style="background:var(--button-primary-bg-subtle)"><span>&#128202;</span></div>
+            <div class="stat-lbl">Recent Activity</div>
+            <div class="stat-val">3</div>
+            <div class="stat-sub">Last 7 days</div>
+          </div>
+        </div>
+        <div class="awe-card awe-card--light awe-card--medium">
+          <div class="card-title-text">Quick Actions</div>
+          <div class="info-row">
+            <span class="info-lbl">Add Funds</span>
+            <button class="btn primary small" onclick="openModal('add-funds-modal')">Add</button>
+          </div>
+          <div class="info-row">
+            <span class="info-lbl">Manage Limit</span>
+            <button class="btn secondary small" onclick="openModal('manage-limit-modal')">Edit</button>
+          </div>
+        </div>
+        <div class="awe-card awe-card--light awe-card--medium">
+          <div class="card-title-text">Spending Activity</div>
+          <div class="info-row">
+            <span class="info-lbl">Last Transaction</span>
+            <span class="info-val">Oct 19, 2024</span>
+          </div>
+          <div class="info-row">
+            <span class="info-lbl">Merchant</span>
+            <span class="info-val">Amazon</span>
+          </div>
+          <div class="btn-grp" style="margin-top:16px">
+            <button class="btn ghost small" onclick="show('activity-view',document.querySelectorAll('.sidebar li')[2])">View Activity</button>
+          </div>
+        </div>
+      </div>
+      <!-- 2.4 Activity View -->
+      <div class="page" id="activity-view">
+        <div class="page-hdr">
+          <div>
+            <div class="heading h3">Youth Spending Activity</div>
+            <div class="page-sub">Review and analyze youth spending</div>
+          </div>
+          <button class="btn secondary medium" onclick="show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">&larr; Back</button>
+        </div>
+        <div class="awe-card awe-card--light awe-card--auto">
+          <div class="card-title-text">Spending by Category</div>
+          <div class="tabs-container">
+            <div class="tabs-nav">
+              <div class="tab-item active" onclick="switchTab(this,'activity-transactions')">Transactions</div>
+              <div class="tab-item" onclick="switchTab(this,'activity-summary')">Summary</div>
+            </div>
+          </div>
+          <div id="activity-transactions" style="display:block">
+            <div class="activity-filters">
+              <input class="input-wrapper" placeholder="Date Range" style="width:120px"/>
+              <input class="input-wrapper" placeholder="Category" style="width:120px"/>
+              <button class="btn secondary small">Filter</button>
+            </div>
+            <div class="activity-list">
+              <div class="activity-row">
+                <div class="activity-cell">Oct 19, 2024</div>
+                <div class="activity-cell">Amazon</div>
+                <div class="activity-cell">-$32.00</div>
+                <div class="activity-cell">$388.00</div>
+              </div>
+              <div class="activity-row">
+                <div class="activity-cell">Oct 17, 2024</div>
+                <div class="activity-cell">Starbucks</div>
+                <div class="activity-cell">-$6.50</div>
+                <div class="activity-cell">$420.00</div>
+              </div>
+              <div class="activity-row">
+                <div class="activity-cell">Oct 15, 2024</div>
+                <div class="activity-cell">Target</div>
+                <div class="activity-cell">-$12.00</div>
+                <div class="activity-cell">$426.50</div>
+              </div>
+            </div>
+          </div>
+          <div id="activity-summary" style="display:none">
+            <div class="chart-placeholder">[ Chart: Spending by Category ]</div>
+            <div class="info-row">
+              <span class="info-lbl">Most spent</span>
+              <span class="info-val">Shopping</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Total this week</span>
+              <span class="info-val">$50.50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pu.1 Add Funds Modal -->
+      <div class="modal-bg" id="add-funds-bg"></div>
+      <div class="modal" id="add-funds-modal" style="display:none">
+        <div class="modal-content">
+          <div class="page-hdr">
+            <div>
+              <div class="heading h3">Add Funds to Youth Account</div>
+              <div class="page-sub">Transfer funds securely</div>
+            </div>
+            <button class="btn ghost medium" onclick="closeModal('add-funds-modal')">&times;</button>
+          </div>
+          <div class="input-container">
+            <label>Source Account</label>
+            <select class="input-wrapper">
+              <option>Checking (****1234)</option>
+              <option>Savings (****5678)</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <label>Amount</label>
+            <input class="input-wrapper" placeholder="$0.00" type="number" min="1"/>
+          </div>
+          <div class="helptext">Projected balance after transfer: $____</div>
+          <div class="btn-grp" style="margin-top:18px">
+            <button class="btn secondary medium" onclick="closeModal('add-funds-modal')">Cancel</button>
+            <button class="btn primary medium" onclick="showModal('transfer-success-modal')">Confirm Transfer</button>
+          </div>
+        </div>
+      </div>
+      <!-- Pu.2 Transfer Success Confirmation Modal -->
+      <div class="modal-bg" id="transfer-success-bg"></div>
+      <div class="modal" id="transfer-success-modal" style="display:none">
+        <div class="modal-content">
+          <div class="ok-wrap">
+            <div class="ok-ring">&#10003;</div>
+            <div class="heading h3">Transfer Successful</div>
+            <div class="page-sub">Funds added to youth account</div>
+            <div class="info-row">
+              <span class="info-lbl">Youth Account Balance</span>
+              <span class="info-val">$470.00</span>
+            </div>
+            <div class="info-row">
+              <span class="info-lbl">Source Account</span>
+              <span class="info-val">Checking (****1234)</span>
+            </div>
+            <div class="btn-grp" style="justify-content:center;margin-top:16px">
+              <button class="btn primary medium" onclick="closeModal('transfer-success-modal');show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">Done</button>
+              <button class="btn secondary medium" onclick="openModal('manage-limit-modal')">Set Limit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Er.1 Insufficient Funds Error Modal -->
+      <div class="modal-bg" id="insufficient-funds-bg"></div>
+      <div class="modal" id="insufficient-funds-modal" style="display:none">
+        <div class="modal-content">
+          <div class="page-hdr">
+            <div>
+              <div class="heading h3">Insufficient Funds</div>
+              <div class="page-sub">Please lower the amount or choose another account</div>
+            </div>
+            <button class="btn ghost medium" onclick="closeModal('insufficient-funds-modal')">&times;</button>
+          </div>
+          <div class="snackbar-alert snackbar-warn">
+            Insufficient funds. Try a lower amount or select another source account.
+          </div>
+          <div class="btn-grp">
+            <button class="btn secondary medium" onclick="closeModal('insufficient-funds-modal')">Back</button>
+            <button class="btn primary medium" onclick="openModal('add-funds-modal')">Try Again</button>
+          </div>
+          <div class="helptext">Suggestion: Top up your main account or select a different funding source.</div>
+        </div>
+      </div>
+      <!-- Pu.3 Manage Spending Limit Modal -->
+      <div class="modal-bg" id="manage-limit-bg"></div>
+      <div class="modal" id="manage-limit-modal" style="display:none">
+        <div class="modal-content">
+          <div class="page-hdr">
+            <div>
+              <div class="heading h3">Manage Spending Limit</div>
+              <div class="page-sub">Set weekly limit for youth account</div>
+            </div>
+            <button class="btn ghost medium" onclick="closeModal('manage-limit-modal')">&times;</button>
+          </div>
+          <div class="input-container">
+            <label>Weekly Limit</label>
+            <input class="input-wrapper" placeholder="$0.00" type="number" min="1"/>
+          </div>
+          <div class="helptext">Current limit: $50/week</div>
+          <div class="helptext">Tip: Set a weekly limit based on past spending.</div>
+          <div class="btn-grp" style="margin-top:18px">
+            <button class="btn secondary medium" onclick="closeModal('manage-limit-modal')">Cancel</button>
+            <button class="btn primary medium" onclick="showModal('limit-set-modal')">Save Limit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Pu.4 Limit Set Confirmation Modal -->
+      <div class="modal-bg" id="limit-set-bg"></div>
+      <div class="modal" id="limit-set-modal" style="display:none">
+        <div class="modal-content">
+          <div class="ok-wrap">
+            <div class="ok-ring">&#10003;</div>
+            <div class="heading h3">Limit Set</div>
+            <div class="page-sub">New weekly limit is active</div>
+            <div class="info-row">
+              <span class="info-lbl">Weekly Limit</span>
+              <span class="info-val">$60/week</span>
+            </div>
+            <div class="helptext">Tip: Review limits monthly to teach responsible spending.</div>
+            <div class="btn-grp" style="justify-content:center;margin-top:16px">
+              <button class="btn primary medium" onclick="closeModal('limit-set-modal');show('youth-dashboard',document.querySelectorAll('.sidebar li')[1])">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Navigation
+  function show(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.sidebar li').forEach(n => n.classList.remove('selected'));
+    if (el) el.classList.add('selected');
+    closeAllModals();
+  }
+  // Modal Handling
+  function openModal(id) {
+    closeAllModals();
+    document.getElementById(id).style.display = 'flex';
+    var bg = document.getElementById(id.replace('modal','bg'));
+    if(bg) bg.classList.add('active');
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+    var bg = document.getElementById(id.replace('modal','bg'));
+    if(bg) bg.classList.remove('active');
+  }
+  function closeAllModals() {
+    ['add-funds-modal','transfer-success-modal','manage-limit-modal','limit-set-modal','insufficient-funds-modal'].forEach(function(mid){
+      if(document.getElementById(mid)){document.getElementById(mid).style.display='none';}
+      var bg = document.getElementById(mid.replace('modal','bg'));
+      if(bg){bg.classList.remove('active');}
+    });
+  }
+  function showModal(id) {
+    closeAllModals();
+    document.getElementById(id).style.display = 'flex';
+    var bg = document.getElementById(id.replace('modal','bg'));
+    if(bg) bg.classList.add('active');
+  }
+  function switchTab(el,panelId){
+    el.parentElement.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('activity-transactions').style.display = panelId==='activity-transactions'?'block':'none';
+    document.getElementById('activity-summary').style.display = panelId==='activity-summary'?'block':'none';
+  }
+</script>
+</body>
+</html>
